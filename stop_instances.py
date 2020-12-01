@@ -12,6 +12,10 @@ def find_running_instances(ec2client):
                 'Name': 'instance-state-name',
                 'Values': ['running']
             },
+            {
+                'Name': 'tag:Env',
+                'Values': ['dev']
+            }
         ])
     instances = list()
     for resv in resp['Reservations']:
@@ -28,6 +32,9 @@ def stop_instances(ec2client, ids):
 
 def stop_running_instances(ec2client):
     instances = find_running_instances(ec2client)
+    if len(instances) == 0:
+        return
+    
     stoppingInstances = stop_instances(
         ec2client,
         ids=[i['InstanceId'] for i in instances]
