@@ -1,5 +1,5 @@
-# Stop running ec2 instances
-Running中のインスタンスのうち、以下のタグが付いているインスタンスを停止するスクリプト。  
+# Stop running instances
+Running中のec2およびrdsインスタンスのうち、以下のタグが付いているインスタンスを停止するスクリプト。  
 
 | Key | Value | 
 | -- | -- |
