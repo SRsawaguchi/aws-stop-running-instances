@@ -34,7 +34,7 @@ def find_running_db_instances(rds_client):
 def stop_db_instances(rds_client, ids):
     for db_identifier in ids:
         rds_client.stop_db_instance(DBInstanceIdentifier=db_identifier)
-        print('[rds] stopping: ' + db_identifier)
+        # print('[rds] stopping: ' + db_identifier)
 
 
 def find_running_instances(ec2_client):
@@ -60,8 +60,9 @@ def stop_running_db_instances(rds_client):
     ids = find_running_db_instances(rds_client)
     if len(ids) == 0:
         print('[rds] There is no running db instances.')
-        return
+        return []
     stop_db_instances(rds_client, ids)
+    return ids
 
 
 def stop_ec2_instances(ec2_client, ids):
@@ -73,7 +74,7 @@ def stop_running_ec2_instances(ec2_client):
     instances = find_running_instances(ec2_client)
     if len(instances) == 0:
         print('[ec2] There is no running ec2 instances.')
-        return
+        return []
 
     stoppingInstances = stop_ec2_instances(
         ec2_client,
@@ -81,7 +82,9 @@ def stop_running_ec2_instances(ec2_client):
     )
     for instance in stoppingInstances:
         print('[ec2] stopping: ' + instance['InstanceId'])
+    return [i['InstanceId'] for i in stoppingInstances]
 
 
-stop_running_ec2_instances(get_ec2_client())
-stop_running_db_instances(get_rds_client())
+if __name__ == "__main__":
+    stop_running_ec2_instances(get_ec2_client())
+    stop_running_db_instances(get_rds_client())
