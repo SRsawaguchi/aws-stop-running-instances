@@ -1,6 +1,7 @@
 # Stop running instances
 Running中のec2およびrdsインスタンスのうち、以下のタグが付いているインスタンスを停止するスクリプト。  
 なお、AWS Lambdaで実行することもできる。  
+※AWS Lambdaで実行する場合はSlackに通知ができる。  
 
 | Key | Value | 
 | -- | -- |
