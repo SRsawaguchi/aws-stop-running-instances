@@ -1,24 +1,33 @@
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "logs:CreateLogGroup",
-        "logs:CreateLogStream",
-        "logs:PutLogEvents"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": ["ec2:DescribeInstances", "ec2:StopInstances"],
-      "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": ["RDS:DescribeDBInstances", "RDS:StopDBInstance"],
-      "Resource": ["*"]
-    }
-  ]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstances",
+                "ec2:StopInstances"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "RDS:DescribeDBInstances",
+                "RDS:StopDBInstance",
+                "RDS:ListTagsForResource"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
 }
