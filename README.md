@@ -18,7 +18,7 @@ pip install -r requirements.txt
 python src/stop_instances.py
 ```
 
-## AWS Lambdaで利用する
+## AWS Lambdaで実行
 
 ### policyの作成
 
