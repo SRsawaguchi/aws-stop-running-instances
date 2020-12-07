@@ -1,6 +1,11 @@
-FUNCTION_NAME := hello_slack
+FUNCTION_NAME := stop-running-ec2-rds-instances
 ZIP_FILE := build/lambda.zip
 SRC_DIR := src
+
+.PHONY: build
+build:
+	rm -f $(ZIP_FILE) && \
+	zip -r $(ZIP_FILE) -j $(SRC_DIR)
 
 .PHONY: deploy
 deploy:
